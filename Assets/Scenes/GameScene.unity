@@ -271,10 +271,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u8DDD\u96E2"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1110055b59fe148d9a444d4d3e8f8024, type: 2}
-  m_sharedMaterial: {fileID: -1591719099836543884, guid: 1110055b59fe148d9a444d4d3e8f8024, type: 2}
+  m_sharedMaterial: {fileID: 1004700431270784523, guid: 1110055b59fe148d9a444d4d3e8f8024, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

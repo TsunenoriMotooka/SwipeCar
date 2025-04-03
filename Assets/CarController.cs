@@ -8,17 +8,27 @@ public class CarController : MonoBehaviour
     float speed = 0;
     Vector2 startPos;
     public bool hasSwiped = false;
-    public bool hasStopped = false; 
+    public bool hasStopped = false;
+    public bool hasPause = false; 
 
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 60;        
+        Application.targetFrameRate = 60;
+        
+        this.Init();       
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (hasPause) {
+            if (Input.GetMouseButtonUp(0)) {
+                hasPause = false;
+            }
+            return;
+        }
+        
         if (!hasSwiped && Input.GetMouseButtonDown(0))
         {
             this.startPos = Input.mousePosition;
@@ -44,6 +54,19 @@ public class CarController : MonoBehaviour
                 this.speed = 0;
                 this.hasStopped = true;
             }        
+        }
+    }
+
+    public void Init()
+    {
+        this.hasSwiped = false;
+        this.hasStopped = false;
+        this.speed = 0;
+        Vector2 initPos = new Vector2(-7f, -3.7f);
+        this.transform.position = initPos;
+        
+        if (Input.GetMouseButtonDown(0)) {
+            hasPause = true;
         }
     }
 }
