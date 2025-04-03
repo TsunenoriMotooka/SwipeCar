@@ -7,7 +7,7 @@ public class CarController : MonoBehaviour
 {
     float speed = 0;
     Vector2 startPos;
-    bool hasSwiped = false;
+    public bool hasSwiped = false;
     public bool hasStopped = false; 
 
     // Start is called before the first frame update
@@ -27,17 +27,19 @@ public class CarController : MonoBehaviour
         if (!hasSwiped && Input.GetMouseButtonUp(0))
         {
             hasSwiped = true;
+            
             Vector2 endPos = Input.mousePosition;
             float swipeLength = Mathf.Max(0, endPos.x - this.startPos.x);
-
             this.speed = swipeLength / 500f;
+
+            GetComponent<AudioSource>().Play();
         }
 
         if (hasSwiped && !hasStopped)
         {
             transform.Translate(this.speed, 0, 0);
             this.speed *= 0.98f;
-            if (Math.Floor(this.speed * 1000) == 0)
+            if (Math.Floor(this.speed * 10000) == 0)
             {
                 this.speed = 0;
                 this.hasStopped = true;
